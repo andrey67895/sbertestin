@@ -1,6 +1,6 @@
-package ru.yandex.market.page;
+package uiTests.ruYandexMarket.page;
 
-import helpers.AssertHelpers;
+import helpers.AssertHelper;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import webdriver.WebDriverActions;
@@ -20,7 +20,7 @@ public class MainPage extends BasePage {
 
     @Step("Перейти в Яндекс Маркет.")
     public void clickOnTheLinkInTheMenu() {
-        AssertHelpers.assertEquals(driver.getTitle(), title);
+        AssertHelper.assertEquals(driver.getTitle(), title);
         WebDriverActions.clickOnTheLink(driver, marketSelector);
     }
 }

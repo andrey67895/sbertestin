@@ -1,10 +1,11 @@
-package ru.yandex.market.tests;
+package uiTests.ruYandexMarket.tests;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import uiTests.BaseTest;
 
 @DisplayName("Проверка каталога Я.Маркет")
 public class MarketCatalogTest extends BaseTest {
@@ -20,7 +21,7 @@ public class MarketCatalogTest extends BaseTest {
             "Компьютеры, Планшеты, 20000, 95000, Xiaomi"
     })
     @DisplayName("Проверка каталога и поиска товаров")
-    public void chromeSession(String category, String subcategory, String costFrom, String costTo, String producer) {
+    public void marketCatalogTest(String category, String subcategory, String costFrom, String costTo, String producer) {
         mainPages.open(domain);
         mainPages.clickOnTheLinkInTheMenu();
         marketPage.clickOnTheLinkInTheMenu();
