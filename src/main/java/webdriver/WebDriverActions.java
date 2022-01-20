@@ -42,7 +42,7 @@ public class WebDriverActions {
                 (10, TimeUnit.SECONDS).until(driver.findElement(by)::isDisplayed);
     }
 
-    @Step("Удалить и добавить Cookie:{} c Value:{}")
+    @Step("Удалить и добавить Cookie:{cookieNamed} c Value:{value}")
     public static void deleteAndSetCookie(WebDriver driver, String cookieNamed, String value) {
         log.info(String.format("Удалить  Cookie c Named: %s", cookieNamed));
         driver.manage().deleteCookieNamed(cookieNamed);
