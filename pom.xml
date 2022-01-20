@@ -19,6 +19,9 @@
         <allure-junit5.version>2.17.2</allure-junit5.version>
         <allure-maven.version>2.10.0</allure-maven.version>
         <allure.results.directory>allure-results</allure.results.directory>
+        <junit.jupiter.version>5.8.2</junit.jupiter.version>
+        <slf4.version>1.7.32</slf4.version>
+
         <allure.report.directory>target/allure-report</allure.report.directory>
     </properties>
 
@@ -80,7 +83,7 @@
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
-                <version>1.7.32</version>
+                <version>${slf4.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -88,23 +91,23 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.7.32</version>
+            <version>${slf4.version}</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>5.8.2</version>
+            <version>${junit.jupiter.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.vintage</groupId>
             <artifactId>junit-vintage-engine</artifactId>
-            <version>5.8.2</version>
+            <version>${junit.jupiter.version}</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-params</artifactId>
-            <version>5.8.2</version>
+            <version>${junit.jupiter.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -141,7 +144,5 @@
             <version>4.1.1</version>
             <scope>compile</scope>
         </dependency>
-
     </dependencies>
-    
 </project>
