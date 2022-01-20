@@ -1,6 +1,6 @@
 package webdriver;
 
-import helpers.AssertHelpers;
+import helpers.AssertHelper;
 import io.qameta.allure.Step;
 import lombok.extern.java.Log;
 import org.openqa.selenium.By;
@@ -20,7 +20,7 @@ public class WebDriverActions {
     public static void open(WebDriver driver, String subUrl) {
         log.info(String.format("Переход на страницу %s", subUrl));
         driver.get(subUrl);
-        AssertHelpers.assertEquals(driver.getCurrentUrl(), subUrl);
+        AssertHelper.assertEquals(driver.getCurrentUrl(), subUrl);
     }
 
     @Step("Найти и кликнуть на селектор {selector}")
@@ -42,7 +42,7 @@ public class WebDriverActions {
                 (10, TimeUnit.SECONDS).until(driver.findElement(by)::isDisplayed);
     }
 
-    @Step("Удалить и добавить Cookie:{} c Value:{}")
+    @Step("Удалить и добавить Cookie:{cookieNamed} c Value:{value}")
     public static void deleteAndSetCookie(WebDriver driver, String cookieNamed, String value) {
         log.info(String.format("Удалить  Cookie c Named: %s", cookieNamed));
         driver.manage().deleteCookieNamed(cookieNamed);

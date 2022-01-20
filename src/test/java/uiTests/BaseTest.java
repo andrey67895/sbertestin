@@ -1,10 +1,10 @@
-package ru.yandex.market.tests;
+package uiTests;
 
 import lombok.extern.java.Log;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.WebDriver;
-import ru.yandex.market.page.MainPage;
-import ru.yandex.market.page.MarketPage;
+import uiTests.ruYandexMarket.page.MainPage;
+import uiTests.ruYandexMarket.page.MarketPage;
 import webdriver.WebDriverUI;
 
 import java.io.File;

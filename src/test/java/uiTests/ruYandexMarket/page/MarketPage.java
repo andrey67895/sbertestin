@@ -1,6 +1,6 @@
-package ru.yandex.market.page;
+package uiTests.ruYandexMarket.page;
 
-import helpers.AssertHelpers;
+import helpers.AssertHelper;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -37,7 +37,7 @@ public class MarketPage extends BasePage {
     @Step("Кликнуть на меню 'Категория'")
     public void clickOnTheLinkInTheMenu() {
         WebDriverActions.switchToWindowTab(driver, 1);
-        AssertHelpers.assertEquals(driver.getTitle(), title);
+        AssertHelper.assertEquals(driver.getTitle(), title);
         WebDriverActions.clickOnTheLink(driver, catalogPopupButton);
     }
 
@@ -47,7 +47,7 @@ public class MarketPage extends BasePage {
         WebDriverActions.clickOnTheLink(driver, String.format("//span[. = '%s']", text));
         By by = By.xpath(h1);
         WebDriverActions.waitVisibleElement(driver, by);
-        AssertHelpers.assertEquals(driver.findElement(by).getText(), text);
+        AssertHelper.assertEquals(driver.findElement(by).getText(), text);
     }
 
     @Step("Выбрать раздел {text}")
@@ -55,13 +55,13 @@ public class MarketPage extends BasePage {
         WebDriverActions.clickOnTheLink(driver, String.format("//a[. = '%s']", text));
         with().pollDelay(100, TimeUnit.MILLISECONDS).await().atMost
                 (10, TimeUnit.SECONDS).untilAsserted(() ->
-                AssertHelpers.assertEquals(driver.findElement(By.xpath(h1)).getText().split(" ")[0], text));
-        AssertHelpers.assertEquals(driver.findElement(By.xpath(h1)).getText().split(" ")[0], text);
+                AssertHelper.assertEquals(driver.findElement(By.xpath(h1)).getText().split(" ")[0], text));
+        AssertHelper.assertEquals(driver.findElement(By.xpath(h1)).getText().split(" ")[0], text);
     }
 
     @Step("Задать параметр поиска от {fromCost} рублей. до {toCost} рублей.")
     public void sendTheCostOfTheProduct(String fromCost, String toCost) {
-        AssertHelpers.assertEquals(driver.findElement(By.xpath(String.format("//legend[. = '%s']", costTitle))).getText(), costTitle);
+        AssertHelper.assertEquals(driver.findElement(By.xpath(String.format("//legend[. = '%s']", costTitle))).getText(), costTitle);
         if (fromCost != null && toCost != null) {
             WebDriverActions.findAndSendText(driver, inputFromCost, fromCost);
             WebDriverActions.findAndSendText(driver, inputToCost, toCost);
@@ -74,7 +74,7 @@ public class MarketPage extends BasePage {
 
     @Step("Выбрать производителя {producer}.")
     public void chooseAProducer(String producer) {
-        AssertHelpers.assertEquals(driver.findElement(By.xpath(String.format("//legend[. = '%s']", producerTitle))).getText(), producerTitle);
+        AssertHelper.assertEquals(driver.findElement(By.xpath(String.format("//legend[. = '%s']", producerTitle))).getText(), producerTitle);
         WebDriverActions.waitVisibleElement(driver, By.xpath(String.format(".//span[. = '%s']", producer)));
         WebDriverActions.clickOnTheLink(driver, String.format(".//span[. = '%s']", producer));
     }
@@ -83,7 +83,7 @@ public class MarketPage extends BasePage {
     public void waitingActivationFilters(String producer) {
         with().pollDelay(100, TimeUnit.MILLISECONDS).await().atMost
                 (10, TimeUnit.SECONDS).untilAsserted(() ->
-                AssertHelpers.assertEquals(driver.findElement(By.xpath(h1)).getText().split(" ")[1], producer));
+                AssertHelper.assertEquals(driver.findElement(By.xpath(h1)).getText().split(" ")[1], producer));
 
     }
 
@@ -96,7 +96,7 @@ public class MarketPage extends BasePage {
             WebDriverActions.refresh(driver);
             driver.findElements(By.xpath(snippetName))
                     .forEach(element -> webElementTitleList.add(element.getAttribute("title")));
-            AssertHelpers.assertTrue(String.format("Элементов на странице %s", valueCatalogLimit), webElementTitleList.size() == valueCatalogLimit);
+            AssertHelper.assertTrue(String.format("Элементов на странице %s", valueCatalogLimit), webElementTitleList.size() == valueCatalogLimit);
         });
         AtomicReference<String> firstElement = new AtomicReference<>();
         step(" Запомнить первый элемент в списке.", () ->
@@ -114,7 +114,7 @@ public class MarketPage extends BasePage {
     public void checkFirstProduct(String nameProduct) {
         with().pollDelay(100, TimeUnit.MILLISECONDS).await().atMost
                 (10, TimeUnit.SECONDS).untilAsserted(() ->
-                AssertHelpers.assertEquals(driver.findElement(By.xpath(snippetName))
+                AssertHelper.assertEquals(driver.findElement(By.xpath(snippetName))
                         .getAttribute("title"), nameProduct));
     }
 }

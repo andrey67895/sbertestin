@@ -1,4 +1,4 @@
-package ru.yandex.market.page;
+package uiTests.ruYandexMarket.page;
 
 import org.openqa.selenium.WebDriver;
 import webdriver.WebDriverActions;
