@@ -8,6 +8,7 @@ import org.junit.Assert;
 @Log
 public class AssertHelper {
 
+
     @Step("Проверка ожидаемого и фактического значения")
     public static void assertEquals(Object expected, Object actual) {
         Assert.assertEquals(String.format(" %s, is not equal to %s", expected.toString(), actual.toString()), expected, actual);
