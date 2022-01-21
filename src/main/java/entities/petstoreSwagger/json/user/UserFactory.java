@@ -11,7 +11,7 @@ public class UserFactory {
         String firstName = RandomHelper.getRandomFirstName();
         String lastName = RandomHelper.getRandomLastName();
         return UserJson.builder()
-                .id(RandomHelper.randInt(1 , 100))
+                .id(RandomHelper.randInt(1, 100))
                 .username(firstName + " " + lastName)
                 .firstName(firstName)
                 .lastName(lastName)

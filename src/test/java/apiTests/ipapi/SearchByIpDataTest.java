@@ -2,7 +2,6 @@ package apiTests.ipapi;
 
 import entities.ipapi.json.IpapiResponseJson;
 import enums.Country;
-import helpers.ApiHelper;
 import helpers.AssertHelper;
 import io.restassured.response.Response;
 import lombok.extern.java.Log;
@@ -26,7 +25,7 @@ public class SearchByIpDataTest extends IpapiBaseTest {
 
     @DisplayName("Проверка принадлежности IP-адресов стране USA")
     public void searchByIpData(String ipData) {
-        Response response = ApiHelper.get(YOUR_IPV4, getParams("your_ipv4", ipData), getParams("access_key", ACCESS_KEY));
+        Response response = apiHelper.get(YOUR_IPV4, getParams("your_ipv4", ipData), getParams("access_key", ACCESS_KEY));
         AssertHelper.checkResponse(response, HTTP_OK);
         IpapiResponseJson responseJson = response.as(IpapiResponseJson.class);
         AssertHelper.assertEquals(responseJson.getCountryCode(), Country.US);

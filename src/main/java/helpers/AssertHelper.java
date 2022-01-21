@@ -10,7 +10,8 @@ public class AssertHelper {
 
     @Step("Проверка ожидаемого и фактического значения")
     public static void assertEquals(Object expected, Object actual) {
-        Assert.assertEquals(String.format(" %s, is not equal to %s", expected.toString(), actual.toString()), expected, actual);
+        log.info(String.format("expected: %s and actual: %s", expected.toString(), actual.toString()));
+        Assert.assertEquals(String.format(" %s, is not equal to %s", expected, actual), expected, actual);
     }
 
     @Step("{msg}")
