@@ -1,12 +1,11 @@
 package uiTests;
 
+import enums.Services;
 import lombok.extern.java.Log;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Timeout;
 import org.openqa.selenium.WebDriver;
-import pages.ruYandexMarket.MainPage;
 import webdriver.WebDriverUI;
 
 import java.io.File;
@@ -19,10 +18,14 @@ import java.util.Properties;
 @Log
 @Timeout(60)
 public abstract class BaseUITest extends WebDriverUI {
-    protected MainPage mainPages;
     protected WebDriver driver;
     protected static final Map<String, String> optionDriver = new HashMap<>();
-    protected static String domain;
+    protected String domain;
+
+    protected BaseUITest(Services services) {
+        log.info(String.format("domain: %s", services.getServices()));
+        this.domain = services.getServices();
+    }
 
     @BeforeAll
     public static void setProperties() {
@@ -30,9 +33,6 @@ public abstract class BaseUITest extends WebDriverUI {
         Properties properties = new Properties();
         try {
             properties.load(new FileReader(file));
-            domain = properties.getProperty("domain");
-            optionDriver.put("domain", domain);
-            log.info(String.format("domain: %s", domain));
             String headless = properties.getProperty("headless");
             optionDriver.put("headless", headless);
             log.info(String.format("headless: %s", headless));
@@ -42,12 +42,6 @@ public abstract class BaseUITest extends WebDriverUI {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    @BeforeEach
-    protected void initPage() {
-        driver = getSessionWindowsMaximize(optionDriver);
-        mainPages = new MainPage(driver);
     }
 
     @AfterEach

@@ -58,7 +58,7 @@ public class MarketSubCategoryPage extends BasePage {
 
     @Step("Ожидаем активации всех фильтров")
     public void waitingActivationFilters(String producer) {
-        with().pollDelay(100, MILLISECONDS).await().atMost(10, SECONDS).untilAsserted(() -> assertEquals(h1.getText().split(" ")[1], producer));
+        with().pollDelay(1, SECONDS).await().atMost(15, SECONDS).untilAsserted(() -> assertEquals(h1.getText().split(" ")[1], producer));
     }
 
     @Step("Проверить, что товаров на странице 12.")

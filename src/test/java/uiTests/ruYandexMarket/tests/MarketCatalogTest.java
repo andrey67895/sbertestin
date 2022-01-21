@@ -5,10 +5,9 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import pages.ruYandexMarket.MarketPage;
 import pages.ruYandexMarket.MarketSubCategoryPage;
-import uiTests.BaseUITest;
 
 @DisplayName("Проверка каталога Я.Маркет")
-public class MarketCatalogTest extends BaseUITest {
+public class MarketCatalogTest extends YandexMarketBaseTest {
 
     @ParameterizedTest
     @CsvSource({"Компьютеры, Ноутбуки, null, 30000, Lenovo", "Компьютеры, Планшеты, 20000, 95000, Xiaomi"})
