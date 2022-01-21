@@ -1,5 +1,6 @@
-package helpers;
+package helpers.RestHelpers;
 
+import enums.Services;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
@@ -8,32 +9,37 @@ import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 
-public class RequestHelper {
+public abstract class RequestHelper {
     private static final String APPLICATION_JSON = "application/json";
+    private final String BASE_URL;
+
+    protected RequestHelper(Services services) {
+        this.BASE_URL = services.getServices();
+    }
 
     @Step("Send post request")
-    public static Response put(String path, Object jsonObject, Map<String, String> pathParams) {
+    protected Response putRequest(String path, Object jsonObject, Map<String, String> pathParams) {
         return getRequestSpecification().body(jsonObject).pathParams(pathParams).put(path);
     }
 
     @Step("Send post request")
-    public static Response post(String path, Object jsonObject) {
+    protected Response postRequest(String path, Object jsonObject) {
         return getRequestSpecification().body(jsonObject).post(path);
     }
 
     @Step("Get request")
-    public static Response get(String path) {
+    protected Response getRequest(String path) {
         return getRequestSpecification().get(path);
     }
 
     @Step("Get request")
-    public static Response get(String path, Map<String, String> pathParams, Map<String, String> queryParams) {
+    protected Response getRequest(String path, Map<String, String> pathParams, Map<String, String> queryParams) {
         return getRequestSpecification().pathParams(pathParams)
                 .queryParams(queryParams).get(path);
     }
 
-    private static RequestSpecification getRequestSpecification() {
-        return given().log().all(true)
+    private RequestSpecification getRequestSpecification() {
+        return given().log().all(true).baseUri(BASE_URL)
                 .accept(APPLICATION_JSON)
                 .contentType(APPLICATION_JSON);
     }

@@ -9,14 +9,17 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.Properties;
 
-public class IpapiBaseTest extends BaseApiTest {
+public abstract class IpapiBaseTest extends BaseApiTest {
     protected final static String YOUR_IPV4 = "/{your_ipv4}";
     protected static String ACCESS_KEY;
 
+    public IpapiBaseTest() {
+        super(Services.IPAPI);
+    }
+
     @BeforeAll
     @SneakyThrows
-    public static void setBaseURI() {
-        BaseApiTest.setBaseURI(Services.IPAPI);
+    public static void setProperties() {
         File file = new File("src/test/resources/test.properties");
         Properties properties = new Properties();
         properties.load(new FileReader(file));
