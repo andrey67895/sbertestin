@@ -14,7 +14,12 @@ public abstract class WebDriverUI extends WebDriverActions {
     public static WebDriver getSession(Map<String, String> optionDriver) {
         WebDriverManager.chromedriver().setup();
         ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.setHeadless(Boolean.parseBoolean(optionDriver.get("headless")));
+        if (Boolean.parseBoolean(optionDriver.get("headless"))) {
+            String userAgent = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36";
+            chromeOptions.setHeadless(true);
+            chromeOptions.addArguments("user-agent=" + userAgent);
+        }
+
         if (Boolean.parseBoolean(optionDriver.get("log"))) {
             chromeOptions.setLogLevel(ChromeDriverLogLevel.ALL);
         }

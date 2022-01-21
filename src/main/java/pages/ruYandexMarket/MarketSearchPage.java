@@ -21,8 +21,8 @@ public class MarketSearchPage extends BasePage {
 
     @Step("Найти и проверить, что наименование товара соответствует запомненному значению.")
     public void checkFirstProduct(String nameProduct) {
-        with().pollDelay(100, MILLISECONDS).await().atMost
-                (10, SECONDS).untilAsserted(() ->
+        with().pollDelay(1, SECONDS).await().atMost
+                (15, SECONDS).untilAsserted(() ->
                 assertEquals(snippetName.getAttribute("title"), nameProduct));
     }
 }

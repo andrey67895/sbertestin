@@ -2,7 +2,8 @@ package enums;
 
 public enum Services {
     PETSTORE_SWAGGER("https://petstore.swagger.io"),
-    IPAPI("http://api.ipapi.com");
+    IPAPI("http://api.ipapi.com"),
+    YANDEX("https://yandex.ru/");
 
     private final String services;
 
