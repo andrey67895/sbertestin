@@ -6,7 +6,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Timeout;
 import org.openqa.selenium.WebDriver;
-import webdriver.WebDriverUI;
 
 import java.io.File;
 import java.io.FileReader;
@@ -17,7 +16,7 @@ import java.util.Properties;
 
 @Log
 @Timeout(60)
-public abstract class BaseUITest extends WebDriverUI {
+public abstract class BaseUITest{
     protected WebDriver driver;
     protected static final Map<String, String> optionDriver = new HashMap<>();
     protected String domain;

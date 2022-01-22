@@ -4,6 +4,7 @@ import enums.Services;
 import org.junit.jupiter.api.BeforeEach;
 import pages.ruYandexMarket.MainPage;
 import uiTests.BaseUITest;
+import webdriver.WebDriverUI;
 
 public class YandexMarketBaseTest extends BaseUITest {
     protected MainPage mainPages;
@@ -14,7 +15,7 @@ public class YandexMarketBaseTest extends BaseUITest {
 
     @BeforeEach
     protected void initPage() {
-        driver = getSessionWindowsMaximize(optionDriver);
+        driver = WebDriverUI.getSessionWindowsMaximize(optionDriver);
         mainPages = new MainPage(driver);
     }
 }
