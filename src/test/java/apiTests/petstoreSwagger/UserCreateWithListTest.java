@@ -24,6 +24,7 @@ public class UserCreateWithListTest extends PetstoreSwaggerBaseTest {
         Response response = apiHelper.post(CREATE_WITH_LIST, createWithListJsons);
         step("Проверка ответа", () -> {
             AssertHelper.checkResponse(response, HTTP_OK);
+            AssertHelper.checkSchema(response, ResponsePetstoreSwaggerJson.class);
             ResponsePetstoreSwaggerJson responseJson = response.as(ResponsePetstoreSwaggerJson.class);
             AssertHelper.assertEquals(responseJson.getCode(), HTTP_OK);
             AssertHelper.assertEquals(responseJson.getMessage(), "ok");

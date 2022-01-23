@@ -21,6 +21,7 @@
         <allure.results.directory>allure-results</allure.results.directory>
         <junit.jupiter.version>5.8.2</junit.jupiter.version>
         <allure.maven.version>2.10.0</allure.maven.version>
+        <rest-assured.version>4.4.0</rest-assured.version>
 
         <allure.report.directory>target/allure-report</allure.report.directory>
     </properties>
@@ -141,8 +142,19 @@
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
-            <version>4.4.0</version>
+            <version>${rest-assured.version}</version>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>json-schema-validator</artifactId>
+            <version>${rest-assured.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.victools</groupId>
+            <artifactId>jsonschema-generator</artifactId>
+            <version>4.22.0</version>
         </dependency>
     </dependencies>
 </project>
