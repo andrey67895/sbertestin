@@ -27,6 +27,7 @@ public class SearchByIpDataTest extends IpapiBaseTest {
     public void searchByIpData(String ipData) {
         Response response = apiHelper.get(YOUR_IPV4, getParams("your_ipv4", ipData), getParams("access_key", ACCESS_KEY));
         AssertHelper.checkResponse(response, HTTP_OK);
+        AssertHelper.checkSchema(response, IpapiResponseJson.class);
         IpapiResponseJson responseJson = response.as(IpapiResponseJson.class);
         AssertHelper.assertEquals(responseJson.getCountryCode(), Country.US);
         AssertHelper.assertEquals(responseJson.getCountryName(), Country.US.getCountry());
