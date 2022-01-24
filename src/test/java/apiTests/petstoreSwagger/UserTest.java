@@ -24,7 +24,6 @@ public class UserTest extends PetstoreSwaggerBaseTest {
             ResponsePetstoreSwaggerJson responseJson = response.as(ResponsePetstoreSwaggerJson.class);
             AssertHelper.assertEquals(responseJson.getCode(), HTTP_OK);
             AssertHelper.assertEquals(responseJson.getMessage(), String.valueOf(userJson.getId()));
-            AssertHelper.checkSchema(response, ResponsePetstoreSwaggerJson.class);
         });
     }
 }
