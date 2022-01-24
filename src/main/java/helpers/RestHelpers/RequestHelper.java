@@ -18,7 +18,7 @@ public abstract class RequestHelper {
     }
 
     @Step("Send post request")
-    protected Response putRequest(String path, Object jsonObject, Map<String, String> pathParams) {
+    protected Response putRequest(String path, Object jsonObject, Map<String, ?> pathParams) {
         return getRequestSpecification().body(jsonObject).pathParams(pathParams).put(path);
     }
 
@@ -33,7 +33,7 @@ public abstract class RequestHelper {
     }
 
     @Step("Get request")
-    protected Response getRequest(String path, Map<String, String> pathParams, Map<String, String> queryParams) {
+    protected Response getRequest(String path, Map<String, ?> pathParams, Map<String, ?> queryParams) {
         return getRequestSpecification().pathParams(pathParams)
                 .queryParams(queryParams).get(path);
     }

@@ -26,7 +26,7 @@ public class ApiHelper extends RequestHelper {
     }
 
     @Step("Отправить Get запрос")
-    public Response get(String path, Map<String, String> pathParams, Map<String, String> queryParams) {
+    public Response get(String path, Map<String, ?> pathParams, Map<String, ?> queryParams) {
         Response response = getRequest(path, pathParams, queryParams);
         logResponse(response);
         return response;
@@ -40,7 +40,7 @@ public class ApiHelper extends RequestHelper {
     }
 
     @Step("Отправить Put запрос: {path}")
-    public Response put(String path, Object jsonObject, Map<String, String> pathParams) {
+    public Response put(String path, Object jsonObject, Map<String, ?> pathParams) {
         Response response = putRequest(path, jsonObject, pathParams);
         logResponse(response);
         return response;
