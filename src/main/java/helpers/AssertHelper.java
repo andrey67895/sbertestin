@@ -8,6 +8,12 @@ import io.restassured.response.Response;
 import lombok.extern.java.Log;
 import org.junit.jupiter.api.Assertions;
 
+/**
+ * Выносим общие проверки в общий класс, уменьшаем количество кода.
+ * Логируем проверки.
+ */
+
+
 @Log
 public class AssertHelper {
     @Step("Проверка ожидаемого и фактического значения")
@@ -22,8 +28,14 @@ public class AssertHelper {
         Assertions.assertTrue(condition);
     }
 
+    public static void checkResponseCodeAndSchema(Response response, int expCode, Class<?> clazz) {
+        checkResponseCode(response, expCode);
+        checkSchema(response, clazz);
+    }
+
+
     @Step("Проверка кода ответа")
-    public static void checkResponse(Response response, int expCode) {
+    public static void checkResponseCode(Response response, int expCode) {
         log.info("Проверка статуса ответа");
         response.then().assertThat().statusCode(expCode);
     }

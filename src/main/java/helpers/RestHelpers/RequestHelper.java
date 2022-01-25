@@ -9,10 +9,19 @@ import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 
+/**
+ * APPLICATION_JSON - указываем тип данных
+ * BASE_URL - домен, который мы хотим использовать,
+ * не через RestAssured.baseURI потому что в этом случае у нас глобальная переменная и она пробрасывается для всего проекта,
+ * а мы хотим пользоваться обращениями к различным доменам, можно переопределять, но это потоконебезопасно.
+ *
+ * pathParams и queryParams: так указывать правильно согласно спецификации OpenAPI Specification
+ *
+ */
+
 public abstract class RequestHelper {
     private static final String APPLICATION_JSON = "application/json";
     private final String BASE_URL;
-
     protected RequestHelper(Services services) {
         this.BASE_URL = services.getServices();
     }

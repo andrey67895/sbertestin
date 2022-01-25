@@ -16,17 +16,30 @@ import static java.net.HttpURLConnection.HTTP_OK;
 public abstract class BaseApiTest {
     protected ApiHelper apiHelper;
 
+    /**
+     * Базовый класс API тестов.
+     * Создаем экземпляр АпиХелпера для работы с нужным сервисом.
+     * Запускаем првоерку, что сервис работает
+     */
     protected BaseApiTest(Services services) {
         this.apiHelper = new ApiHelper(services);
         validateServiceIsUp();
     }
 
+
+    /**
+     * Проверка, что сервис работает
+     */
     @Step("Validate service is UP")
     private void validateServiceIsUp() {
         Response response = apiHelper.get("/");
-        AssertHelper.checkResponse(response, HTTP_OK);
+        AssertHelper.checkResponseCode(response, HTTP_OK);
     }
 
+    /**
+     * Метод для генерации Map чтобы прописывать параметры пути
+     * или запроса через соответсвующий метод RestAssured согласно спецификации.
+     */
     protected Map<String, String> getParams(String key, String value) {
         Map<String, String> mapParams = new HashMap<>();
         mapParams.put(key, value);

@@ -2,9 +2,17 @@ package entities.ipapi.json;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import enums.Country;
+import helpers.AssertHelper;
 import lombok.Data;
 
 import java.util.List;
+
+/**
+ * Можно поставить анатацию @JsonIgnoreProperties(ignoreUnknown = true),
+ * и оставить только поля countryCode, countryName, regionName
+ *
+ */
+
 
 @Data
 public class IpapiResponseJson {
@@ -52,5 +60,17 @@ public class IpapiResponseJson {
         private String name;
         @JsonProperty("native")
         private String nativeProperty;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("This IP belongs to %s, %s",
+                countryName,
+                regionName);
+    }
+
+    public void checkCountryCodeAndName(Country country) {
+        AssertHelper.assertEquals(countryCode, country);
+        AssertHelper.assertEquals(countryName, country.getCountry());
     }
 }

@@ -21,11 +21,19 @@ public abstract class BaseUITest{
     protected static final Map<String, String> optionDriver = new HashMap<>();
     protected String domain;
 
+
+    /**
+     * Базовый класс UI тестов.
+     * Логируем сервис который запускаем. Прописываем домен.
+     */
     protected BaseUITest(Services services) {
         log.info(String.format("domain: %s", services.getServices()));
         this.domain = services.getServices();
     }
 
+    /**
+     * Перед прогоном всех автотестов логируем и добавляем необходимые параметры для WebDriver
+     */
     @BeforeAll
     public static void setProperties() {
         File file = new File("src/test/resources/test.properties");
@@ -43,6 +51,9 @@ public abstract class BaseUITest{
         }
     }
 
+    /**
+    После каждого теста завершаем работу WebDriver
+     */
     @AfterEach
     public void sessionDown() {
         driver.quit();
