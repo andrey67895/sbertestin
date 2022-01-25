@@ -13,6 +13,10 @@ public class YandexMarketBaseTest extends BaseUITest {
         super(Services.YANDEX);
     }
 
+    /**
+     * Предусловие перед тестов создаем экземпляр WebDraiver
+     * и экземпляр страницы MainPage
+     */
     @BeforeEach
     protected void initPage() {
         driver = WebDriverUI.getSessionWindowsMaximize(optionDriver);

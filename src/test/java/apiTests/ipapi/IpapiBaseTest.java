@@ -13,10 +13,16 @@ public abstract class IpapiBaseTest extends BaseApiTest {
     protected final static String YOUR_IPV4 = "/{your_ipv4}";
     protected static String ACCESS_KEY;
 
+    /**
+     * Инициируем базовый класс
+     */
     public IpapiBaseTest() {
         super(Services.IPAPI);
     }
 
+    /**
+     * Параметры для запуска теста и получения переменных
+     */
     @BeforeAll
     @SneakyThrows
     public static void setProperties() {

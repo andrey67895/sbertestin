@@ -13,6 +13,18 @@ mvn clean test allure:serve
 mvn clean test allure:report
 ```
 
+Для генерации javadoc использовать команду ниже. 
+Посмотреть сгенерированный javadoc можно по пути:
+
+- Для классов: \target\site\apidocs\index.html
+- Для тестов: \target\site\testapidocs\index.html
+
+
+
+```sh
+mvn clean javadoc:javadoc javadoc:test-javadoc
+```
+
 ## Технологии, которые были использованы:
 
 ### UI-автотесты:

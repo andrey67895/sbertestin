@@ -11,6 +11,10 @@ import java.time.Duration;
 import java.util.Map;
 
 public abstract class WebDriverUI extends WebDriverActions {
+
+    /**
+     * Создаем WebDriver и прописываем параметры запуска
+     */
     public static WebDriver getSession(Map<String, String> optionDriver) {
         WebDriverManager.chromedriver().setup();
         ChromeOptions chromeOptions = new ChromeOptions();
@@ -26,6 +30,9 @@ public abstract class WebDriverUI extends WebDriverActions {
         return new ChromeDriver(chromeOptions);
     }
 
+    /**
+     * Разворачиваем браузер на весь экран
+     */
     @Step("Открыть браузер Chrome и развернуть на весь экран.")
     public static WebDriver getSessionWindowsMaximize(Map<String, String> optionDriver) {
         WebDriver webDriver = getSession(optionDriver);
