@@ -25,6 +25,7 @@ public abstract class BaseUITest{
     /**
      * Базовый класс UI тестов.
      * Логируем сервис который запускаем. Прописываем домен.
+     * @param services запускаем сервис WebDriver UI
      */
     protected BaseUITest(Services services) {
         log.info(String.format("domain: %s", services.getServices()));
