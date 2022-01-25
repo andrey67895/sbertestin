@@ -20,6 +20,7 @@ public abstract class BaseApiTest {
      * Базовый класс API тестов.
      * Создаем экземпляр АпиХелпера для работы с нужным сервисом.
      * Запускаем првоерку, что сервис работает
+     * @param services Запускаем сервис
      */
     protected BaseApiTest(Services services) {
         this.apiHelper = new ApiHelper(services);
@@ -39,6 +40,9 @@ public abstract class BaseApiTest {
     /**
      * Метод для генерации Map чтобы прописывать параметры пути
      * или запроса через соответсвующий метод RestAssured согласно спецификации.
+     * @param key - Название параметра согласно спецификации
+     * @param value - Передаем параметр, который мы хотим видеть в URL
+     * @return возвращаем Карту параметров
      */
     protected Map<String, String> getParams(String key, String value) {
         Map<String, String> mapParams = new HashMap<>();
